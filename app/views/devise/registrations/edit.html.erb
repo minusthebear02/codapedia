@@ -46,8 +46,29 @@
   </div>
 </div>
 
-<h3>Cancel my account</h3>
+<% if current_user.standard? %>
+  <h3>Upgrade to Premium!</h3>
 
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: 'btn btn-danger' %></p>
+  <p>
+    For only $10 you can enjoy the limitless features of a premium membership. <%= button_to "Upgrade", charges_path, class: 'btn btn-primary' %>
+  </p>
+
+<% end %>
+
+<% if current_user.standard? %>
+  <h3>Cancel my account</h3>
+
+  <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: 'btn btn-danger' %></p>
+
+<% else %>
+  <h3>Downgrade or Cancel my account</h3>
+
+
+  <p>Unhappy?</p>
+
+  <%= button_to "Downgrade", charges_path, class: 'btn btn-danger' %>
+  <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: 'btn btn-danger' %>
+
+<% end %>
 
 <%= link_to "Back", :back %>
