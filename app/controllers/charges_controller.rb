@@ -20,12 +20,8 @@ class ChargesController < ApplicationController
       redirect_to edit_user_registration_path
 
     else
-
-      Stripe::Refund.create(
-        charge: charge
-      )
       current_user.standard!
-
+      redirect_to edit_user_registration_path
     end
 
     rescue Stripe::CardError => e

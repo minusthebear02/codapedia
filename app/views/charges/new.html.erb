@@ -1,4 +1,31 @@
-<%= form_tag charges_path do %>
-  <h4>Click the button!</h4>
-  <script class='stripe-button' src="https://checkout.stripe.com/checkout.js" data-key="<%= @stripe_btn_data[:key] %>" data-amount="<%= @stripe_btn_data[:amount] %>" data-description="<%= @stripe_btn_data[:description] %>" ></script>
-<% end %>
+<div class="container">
+  <div class="row">
+    <div class="text-center">
+      <h1>The Perks of Premium</h1>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-4">
+      <h3><%= Faker::Hipster.sentence(3) %></h3>
+      <p><%= Faker::Hipster.paragraph(3) %></p>
+    </div>
+    <div class="col-md-4">
+      <h3><%= Faker::Hipster.sentence(5) %></h3>
+      <p><%= Faker::Hipster.paragraph(2) %></p>
+    </div>
+    <div class="col-md-4">
+      <h3><%= Faker::Hipster.sentence(4) %></h3>
+      <p><%= Faker::Hipster.paragraph(4) %></p>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="text-center">
+      <%= form_tag charges_path do %>
+        <h4>Upgrade Now!</h4>
+        <script class='stripe-button' src="https://checkout.stripe.com/checkout.js" data-key="<%= @stripe_btn_data[:key] %>" data-amount="<%= @stripe_btn_data[:amount] %>" data-description="<%= @stripe_btn_data[:description] %>" ></script>
+      <% end %>
+    </div>
+  </div>
+</div>

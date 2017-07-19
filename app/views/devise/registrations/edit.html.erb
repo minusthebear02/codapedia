@@ -66,7 +66,7 @@
 
   <p>Unhappy?</p>
 
-  <%= button_to "Downgrade", charges_path, class: 'btn btn-danger' %>
+  <%= button_to "Downgrade", charges_path, data: { confirm: "Are you sure? No refunds!" }, class: 'btn btn-danger' %>
   <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: 'btn btn-danger' %>
 
 <% end %>
