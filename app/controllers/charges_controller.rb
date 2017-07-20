@@ -17,9 +17,10 @@ class ChargesController < ApplicationController
 
       flash[:notice] = "Thanks for all the money, #{current_user.email}! Feel free to pay me again."
       current_user.premium!
-      redirect_to edit_user_registration_path
+      redirect_to wikis_path
 
     else
+      current_user.wikis.update_all(private: false)
       current_user.standard!
       redirect_to edit_user_registration_path
     end
