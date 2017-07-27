@@ -23,11 +23,14 @@
   <% if current_user.admin? || current_user.premium? %>
     <div class="form-group">
       <%= f.label :private, class: 'checkbox' do %>
-        <%= f.check_box :private %> Private wiki
+        <%= f.check_box :private %> Private Wiki
       <% end %>
     </div>
   <% end %>
   <div class="form-group">
     <%= f.submit "Save", class: 'btn btn-success' %>
+    <% if @wiki.private? && @wiki.user == current_user %>
+        <%= link_to "Manage Collaborators", wiki_collaborators_path(@wiki), class: "btn btn-primary" %>
+    <% end %>
   </div>
 <% end %>

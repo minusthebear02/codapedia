@@ -14,6 +14,15 @@
   </div>
 </div>
 
+<% if @wiki.private? %>
+  <h3>Wiki Collaborators:</h3>
+  <ul>
+    <% @wiki.users.each do |collaborator| %>
+      <li><%= collaborator.email %></li>
+    <% end %>
+  </ul>
+<% end %>
+
 <div lass="col-md-4">
   <%= link_to "Edit Wiki", edit_wiki_path(@wiki), class: 'btn btn-success' %>
   <% if @wiki.user == current_user %>
