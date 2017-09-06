@@ -1,0 +1,30 @@
+<h1>Manage Collaborators for <%= @wiki.title %></h1>
+
+<table class="table">
+  <thead>
+    <th>
+      Email
+    </th>
+    <th>
+      Add/Remove
+    </th>
+  </thead>
+
+
+  <% @users.each do |user| %>
+    <tr>
+      <td>
+        <%= user.email %>
+      </td>
+      <td>
+        <% if @wiki.users.include?(user) %>
+          <%= link_to "-", wiki_collaborator_path(@wiki, user), method: :delete, class: 'btn btn-danger' %>
+        <% else %>
+          <%= link_to "+", {controller: "collaborators", action: "create", wiki_id: @wiki.id, user_id: user.id}, method: :post, class: 'btn btn-success' %>
+        <% end %>
+      </td>
+    </tr>
+  <% end %>
+
+
+</table>
